@@ -1,9 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
-<engine:UXML
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:engine="UnityEngine.UIElements"
-    xmlns:editor="UnityEditor.UIElements"
-    xsi:noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd"
->
-    
-</engine:UXML>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd">
+    <ui:VisualElement style="flex-grow: 1; background-image: url(&apos;project://database/Assets/baground/Tampilan%20awal.png?fileID=2800000&amp;guid=fd00fe3483a009b4e9abe39487023648&amp;type=3#Tampilan awal&apos;);">
+        <ui:Label tabindex="-1" text="Pattimura Spirit" parse-escape-sequences="true" display-tooltip-when-elided="true" style="-unity-font: url(&apos;project://database/Assets/font/PressStart2P-Regular.ttf?fileID=12800000&amp;guid=1e3359ed345272a4d95f7d5dae66ea35&amp;type=3#PressStart2P-Regular&apos;); -unity-font-definition: initial; -unity-text-align: middle-center; font-size: 28px; left: 0; top: 102px;" />
+        <ui:Button text="Ready for join?" parse-escape-sequences="true" display-tooltip-when-elided="true" style="width: 227px; height: 6px; justify-content: center; -unity-text-align: middle-left; top: 115px; right: -225px; -unity-font: url(&apos;project://database/Assets/font/PressStart2P-Regular.ttf?fileID=12800000&amp;guid=1e3359ed345272a4d95f7d5dae66ea35&amp;type=3#PressStart2P-Regular&apos;); -unity-font-definition: initial; background-color: rgba(188, 188, 188, 0); border-left-color: rgba(149, 149, 149, 0); border-right-color: rgba(149, 149, 149, 0); border-top-color: rgba(149, 149, 149, 0); border-bottom-color: rgba(149, 149, 149, 0); align-items: center;" />
+    </ui:VisualElement>
+</ui:UXML>
