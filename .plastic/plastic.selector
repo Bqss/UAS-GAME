@@ -1,4 +1,0 @@
-repository "UAS GAME@basofi20@cloud"
-  path "/"
-    br "/main"
-    co "/main"
