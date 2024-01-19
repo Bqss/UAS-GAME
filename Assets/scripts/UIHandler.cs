@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Scripts.Player;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -11,17 +12,19 @@ public class UIHandler : MonoBehaviour
 
     public static UIHandler instance { get; private set; }
 
+    GameObject player;
+
     private void Awake()
     {
         instance = this;
     }
 
-
-
     void Start()
     {
         uIDocument = GetComponent<UIDocument>();
+        player = GameObject.FindGameObjectWithTag("Player");
         healthBar = uIDocument.rootVisualElement.Q<VisualElement>("healtBar");
+        SetHealthBar(100);
     }
 
     // Update is called once per frame
