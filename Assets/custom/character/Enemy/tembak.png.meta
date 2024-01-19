@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 98b02178b08905f4f822b50419c1fc6f
+guid: a5bd69f7fd8adda4ebe15e1d9e07bc4b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,127 +123,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Idle_0
+      name: tembak_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 21
         y: 0
-        width: 184
-        height: 137
+        width: 200
+        height: 320
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dfea522cea70b334ea45f89d937bccb0
-      internalID: 1490565336
+      spriteID: bf81a32d681a2254eafc5774b972e63d
+      internalID: 1429492436
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_1
+      name: tembak_1
       rect:
         serializedVersion: 2
-        x: 184
+        x: 202
         y: 0
-        width: 184
-        height: 137
+        width: 200
+        height: 320
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d11c367525f1b354385de2d13351abd8
-      internalID: -823422577
+      spriteID: 3b15c48ff6daee44aa8826ea81fb1f72
+      internalID: -947612782
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_2
+      name: tembak_2
       rect:
         serializedVersion: 2
-        x: 368
+        x: 379
         y: 0
-        width: 184
-        height: 137
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 170
+        height: 320
+      alignment: 9
+      pivot: {x: 0.45884782, y: 0.48713988}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ffc1003566537984c94fcdcb1bd91a33
-      internalID: -1837017192
+      spriteID: 80a033ae50c9a5c449c42c8a6d00d9bd
+      internalID: -564017489
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_3
+      name: tembak_3
       rect:
         serializedVersion: 2
-        x: 552
+        x: 551
         y: 0
-        width: 184
-        height: 137
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 200
+        height: 320
+      alignment: 9
+      pivot: {x: 0.33950624, y: 0.505144}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c7d60e6eb374f97438bb0f9b85da7e8c
-      internalID: -1922928592
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Idle_4
-      rect:
-        serializedVersion: 2
-        x: 736
-        y: 0
-        width: 184
-        height: 137
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d9a887da20f1ba54293bc92d05915606
-      internalID: 472425881
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Idle_5
-      rect:
-        serializedVersion: 2
-        x: 920
-        y: 0
-        width: 184
-        height: 137
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 173f83749ae612041b7a7d5d0fd273c4
-      internalID: -198837823
+      spriteID: 0b31546e77dc91a46909f94d2f1c017e
+      internalID: 1926964507
       vertices: []
       indices: 
       edges: []
@@ -259,12 +217,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Idle_0: 1490565336
-      Idle_1: -823422577
-      Idle_2: -1837017192
-      Idle_3: -1922928592
-      Idle_4: 472425881
-      Idle_5: -198837823
+      tembak_0: 1429492436
+      tembak_1: -947612782
+      tembak_2: -564017489
+      tembak_3: 1926964507
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
