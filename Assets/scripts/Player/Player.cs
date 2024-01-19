@@ -21,7 +21,7 @@ namespace Scripts.Player
     private float MaxHP = 100f;
 
     [SerializeField]
-    private float currentHP  = 100f;
+    private float currentHP = 100f;
 
     [SerializeField]
     private float atkSpeed = 1f;
@@ -34,8 +34,6 @@ namespace Scripts.Player
     Vector2 move;
     Animator animator;
     Vector2 moveDirection = new Vector2(1, 0);
-
-
     void Start()
     {
       hitAction.Enable();
@@ -43,7 +41,6 @@ namespace Scripts.Player
       jumpAction.Enable();
       rigidbody = GetComponent<Rigidbody2D>();
       animator = GetComponent<Animator>();
-      changeHealth(currentHP);
     }
 
     // Update is called once per frame
@@ -124,7 +121,10 @@ namespace Scripts.Player
     {
       animator.SetBool("isAttack", false);
     }
-
+    void resethurt()
+    {
+      animator.SetBool("isHurt", false);
+    }
     IEnumerator AttackCooldown()
     {
       float cooldown = 1f / atkSpeed;
@@ -144,10 +144,25 @@ namespace Scripts.Player
       collider.enabled = true;
     }
 
-    public void changeHealth(float amount)
+    public void takeDamage(float dmg)
     {
-      UIHandler.instance.SetHealthBar(amount/MaxHP* 100);
+      currentHP -= dmg;
+      UIHandler.instance.SetHealthBar((currentHP) / MaxHP * 100);
+      if (currentHP <= 0)
+      {
+        animator.SetBool("isHurt", false);
+        animator.SetBool("isDead", true);
+      }
+      else
+      {
+        animator.SetBool("isHurt", true);
+      }
+
     }
 
+    public float getCurrentHP()
+    {
+      return currentHP;
+    }
   }
 }
