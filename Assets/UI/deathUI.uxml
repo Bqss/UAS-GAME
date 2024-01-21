@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement style="flex-grow: 1; background-image: url(&apos;project://database/Assets/baground/Tampilan%20awal.png?fileID=2800000&amp;guid=fd00fe3483a009b4e9abe39487023648&amp;type=3#Tampilan awal&apos;); justify-content: center; align-items: center;">
+        <ui:Label tabindex="-1" text="Youre Dead" parse-escape-sequences="true" display-tooltip-when-elided="true" style="-unity-font-style: bold; font-size: 40px;" />
+        <ui:Button text="Rety Game" parse-escape-sequences="true" display-tooltip-when-elided="true" name="retry_btn" style="margin-top: 27px; background-color: rgb(255, 74, 0); color: rgb(255, 255, 255); border-top-left-radius: 11px; border-top-right-radius: 11px; border-bottom-right-radius: 11px; border-bottom-left-radius: 11px; padding-right: 20px; padding-left: 20px;" />
+    </ui:VisualElement>
+</ui:UXML>
