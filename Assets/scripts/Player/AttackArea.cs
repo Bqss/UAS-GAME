@@ -6,11 +6,16 @@ using Unity.VisualScripting;
 
 namespace Scripts.Player
 {
+
   
   public class AttackArea : MonoBehaviour
   {
     // Start is called before the first frame update
-
+    private Player player ;
+  
+    void Awake(){
+      player = GetComponentInParent<Player>();
+    }
     void Start()
     { 
 
@@ -27,8 +32,10 @@ namespace Scripts.Player
       if (other.tag.Equals("Enemy"))
       { 
         Debug.Log("enemy got hitted");
+        Debug.Log(player.getDamage());
         Enemy enemy = other.GetComponent<Enemy>();
-        enemy.takeDamage(-10);
+        Debug.Log(enemy);
+        enemy.takeDamage(player.getDamage());
       }
     }
   }

@@ -36,10 +36,15 @@ public class Projectile : MonoBehaviour
 
   void OnCollisionEnter2D(Collision2D other)
   {
-    if (other.gameObject.tag == "Player")
+    string otherTag = other.gameObject.tag;
+    if (otherTag == "Player")
     {
       player.takeDamage(enemy.getDamage());
       Destroy(gameObject);
+    }else if(otherTag == "BoundLeft" || otherTag == "BoundRight")
+    {
+      Destroy(gameObject);
     }
+    
   }
 }

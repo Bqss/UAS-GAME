@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 namespace Scripts
 {
@@ -110,17 +112,9 @@ namespace Scripts
 
     }
 
-    private void changeHealth(float amount)
-    {
-      HP -= amount;
-      if (HP <= 0)
-      {
-        death();
-      }
-    }
 
-    private void death()
-    {
+
+    private void deadCallback(){
       Destroy(gameObject);
     }
     void charFacingHandler()
@@ -137,17 +131,34 @@ namespace Scripts
 
     public void takeDamage(float damage)
     {
-      changeHealth(-damage);
+      
+      HP -= damage;
+      if (HP <= 0)
+      {
+        animator.SetBool("is_iddle",false);
+        animator.SetBool("is_dead", true);
+      }else{
+        animator.SetBool("is_hitted", true);
+        animator.SetBool("is_iddle",false);
+      }
     }
 
     public void attack()
     {
       canAtk = false;
-      animator.SetTrigger("Launch");
-      Vector2 pos = rigidbody2d.position;
+      Vector2 pos = new Vector2(transform.position.x, transform.position.y);
+      if (attackDirection > 0)
+      {
+        pos.x += 0.4f;
+      }
+      else
+      {
+        pos.x -= 0.4f;
+      }
       GameObject projectileObject = Instantiate(projectilePrefab, pos - (Vector2.up * 0.19f), Quaternion.identity);
       Projectile projectile = projectileObject.GetComponent<Projectile>();
       projectile.Launch(new Vector2(attackDirection, 0), 100);
+      animator.SetBool("attack", true);
       StartCoroutine(AttackCooldown());
     }
 
@@ -166,6 +177,26 @@ namespace Scripts
       yield return new WaitForSeconds(cooldown);
       canAtk = true;
     }
+
+    public void resetAttack()
+    {
+      animator.SetBool("attack", false);
+      animator.SetBool("is_iddle",true);
+    }
+
+    public void resetHitted()
+    {
+      animator.SetBool("is_hitted", false);
+    }
+
+
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+
+    }
+
+    
 
   }
 }

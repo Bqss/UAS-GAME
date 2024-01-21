@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine;
+using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 namespace Scripts.Player
 {
@@ -31,11 +33,17 @@ namespace Scripts.Player
     public float speed = 5f;
     Rigidbody2D rigidbody;
 
+    private int coinCount = 0;
+
     Vector2 move;
+    private Vector2 initialPosition;
     Animator animator;
     Vector2 moveDirection = new Vector2(1, 0);
+
+    private bool isDead = false;
     void Start()
     {
+      initialPosition = transform.position;
       hitAction.Enable();
       moveAction.Enable();
       jumpAction.Enable();
@@ -47,16 +55,22 @@ namespace Scripts.Player
     void Update()
     {
       move = moveAction.ReadValue<Vector2>();
-      movementHandler();
-      jumpHandler();
-      if (canAtk && hitAction.triggered)
+      isDead = animator.GetBool("isDead");
+
+
+      if (canAtk && hitAction.triggered && !isDead && !animator.GetBool("isHurt"))
       {
         animator.SetBool("isAttack", true);
         canAtk = false;
         StartCoroutine(AttackCooldown());
       }
-      animator.SetFloat("speedX", move.magnitude);
-      animator.SetFloat("speedY", rigidbody.velocity.y);
+      if (!isDead)
+      {
+        animator.SetFloat("speedX", move.magnitude);
+        animator.SetFloat("speedY", rigidbody.velocity.y);
+        jumpHandler();
+        movementHandler();
+      }
 
     }
 
@@ -66,8 +80,26 @@ namespace Scripts.Player
       {
         animator.SetBool("isJump", false);
       }
+      else if (other.tag == "DeathArea")
+      {
+        Debug.Log("Player is dead");
+      }
+
     }
 
+    void OnCollisionEnter2D(Collision2D other)
+    {
+      // if (other.gameObject.tag == "Enemy")
+      // {
+      //   if (!isDead)
+      //   {
+      //     animator.SetBool("isHurt", true);
+      //     takeDamage(other.gameObject.GetComponent<Enemy>().getDamage());
+      //     transform.Translate(new Vector2(-moveDirection.x * 1f, 0));
+      //     moveDirection = new Vector2(-moveDirection.x * 1f, 0);
+      //   }
+      // }
+    }
     void OnTriggerExit2D(Collider2D other)
     {
       if (other.tag == "ground")
@@ -92,6 +124,10 @@ namespace Scripts.Player
         {
           transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
         }
+        if (move.x != 0)
+        {
+          transform.Translate(new Vector2(moveDirection.x * speed * Time.deltaTime, 0));
+        }
       }
       else
       {
@@ -110,11 +146,19 @@ namespace Scripts.Player
 
     void FixedUpdate()
     {
-      if (move.x != 0)
-      {
-        transform.Translate(new Vector2(moveDirection.x * speed * Time.deltaTime, 0));
-      }
 
+
+    }
+
+    public void dead()
+    {
+      animator.SetBool("isHurt", false);
+      animator.SetBool("isDead", true);
+    }
+
+    public void deadCallBack()
+    {
+      SceneManager.LoadScene("deathScene");
     }
 
     void resetAttack()
@@ -146,23 +190,57 @@ namespace Scripts.Player
 
     public void takeDamage(float dmg)
     {
-      currentHP -= dmg;
-      UIHandler.instance.SetHealthBar((currentHP) / MaxHP * 100);
+      if (currentHP > 0)
+      {
+        currentHP -= dmg;
+        UIHandler.instance.SetHealthBar(currentHP / MaxHP * 100);
+      }
+
       if (currentHP <= 0)
       {
-        animator.SetBool("isHurt", false);
-        animator.SetBool("isDead", true);
+        dead();
       }
       else
       {
+
         animator.SetBool("isHurt", true);
       }
 
+    }
+
+    public void respawn()
+    {
+      transform.position = initialPosition;
+      currentHP = MaxHP;
+      UIHandler.instance.SetHealthBar(currentHP / MaxHP * 100);
+      animator.SetBool("isDead", false);
     }
 
     public float getCurrentHP()
     {
       return currentHP;
     }
+
+    public float getDamage()
+    {
+      return damage;
+    }
+
+    public void addHP(float amount)
+    {
+      currentHP += amount;
+      if (currentHP > MaxHP)
+      {
+        currentHP = MaxHP;
+      }
+      UIHandler.instance.SetHealthBar((currentHP) / MaxHP * 100);
+    }
+
+    public void addCoin(int amount)
+    {
+      coinCount += amount;
+      UIHandler.instance.setCoin(coinCount);
+    }
+
   }
 }
