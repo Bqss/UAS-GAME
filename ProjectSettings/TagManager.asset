@@ -8,14 +8,17 @@ TagManager:
   - attackArea
   - Enemy
   - Bullet
+  - BoundRight
+  - BoundLeft
+  - DeathArea
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Bullet
   - Water
   - UI
-  - 
+  - Enemy
   - 
   - 
   - 
